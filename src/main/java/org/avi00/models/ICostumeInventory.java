@@ -8,7 +8,7 @@ public interface ICostumeInventory {
 
     Costume getCostumeById(int id);
 
-    Costume getCostumeByType(String type);
+   List< Costume> getCostumeByType(String type);
 
     List<Costume> getCostumesByAgeCategory(String ageCategory);
 

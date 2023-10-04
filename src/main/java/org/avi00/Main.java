@@ -1,19 +1,45 @@
 package org.avi00;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import org.avi00.controllers.CostumeInventoryController;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Initialize controllers and other necessary objects
+        CostumeInventoryController costumeInventoryController = new CostumeInventoryController();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Costume Shop!");
+
+        boolean isRunning = true;
+        while (isRunning) {
+            // Display the main menu
+            System.out.println("Main Menu:");
+            System.out.println("1. Costume Inventory");
+            System.out.println("2. Place Orders");
+            System.out.println("3. Return Orders");
+            System.out.println("-1. Exit");
+            System.out.print("Enter your choice: ");
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    costumeInventoryController.manageInventory();
+                    break;
+                case "-1":
+                    isRunning = false;
+                    System.out.println("Exiting the application. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
         }
+
+        // Close the scanner
+        scanner.close();
     }
 }

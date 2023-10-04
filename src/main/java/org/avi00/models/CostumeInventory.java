@@ -41,13 +41,14 @@ public class CostumeInventory implements ICostumeInventory {
     }
 
     @Override
-    public Costume getCostumeByType(String type) {
+    public List<Costume> getCostumeByType(String type) {
+        List<Costume> matchingCostumes = new ArrayList<>();
         for (Costume costume : costumes) {
             if (costume.getType().equals(type)) {
-                return costume;
+                matchingCostumes.add(costume);
             }
         }
-        return null;
+        return matchingCostumes;
     }
 
     @Override

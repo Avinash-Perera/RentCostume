@@ -10,16 +10,19 @@ public class Costume {
 
     private String ageCategory;
 
+    double  price;
+
     public Costume() {
 
     }
-    public Costume(int id, String name, String size, String type, String rentalStatus, String ageCategory) {
+    public Costume(int id, String name, String size, String type, String rentalStatus, String ageCategory, double price) {
         this.id = id;
         this.name = name;
         this.size = size;
         this.type = type;
         this.rentalStatus = rentalStatus;
         this.ageCategory = ageCategory;
+        this.price = price;
     }
 
     public int getId() {
@@ -81,6 +84,15 @@ public class Costume {
     public boolean isAvailable() {
         return this.rentalStatus.equals("Available");
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Costume{" +
@@ -89,6 +101,8 @@ public class Costume {
                 ", size='" + size + '\'' +
                 ", type='" + type + '\'' +
                 ", rentalStatus='" + rentalStatus + '\'' +
+                ", ageCategory='" + ageCategory + '\'' +
+                ", price=" + price +
                 '}';
     }
 }
