@@ -1,6 +1,7 @@
 package org.avi00;
 
 import org.avi00.controllers.CostumeInventoryController;
+import org.avi00.controllers.OrderController;
 
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         // Initialize controllers and other necessary objects
         CostumeInventoryController costumeInventoryController = new CostumeInventoryController();
+        OrderController orderController = new OrderController();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -28,6 +30,9 @@ public class Main {
             switch (choice) {
                 case "1":
                     costumeInventoryController.manageInventory();
+                    break;
+                case "2":
+                    orderController.showMenu();
                     break;
                 case "-1":
                     isRunning = false;

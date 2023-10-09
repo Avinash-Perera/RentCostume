@@ -3,6 +3,8 @@ package org.avi00.models;
 import java.util.Date;
 
 public class Order {
+    private static int nextOrderId = 1;
+    private int orderId;
     private String customerFullName;
     private String customerAddress;
     private String customerNIC;
@@ -11,17 +13,24 @@ public class Order {
     private Date rentalStartDate;
     private double totalAmount;
 
-    public Order(String customerFullName, String customerAddress,
-                 String customerNIC, int numberOfRentalDays,
-                 Costume rentedCostume, Date rentalStartDate,
-                 double totalAmount) {
+    public Order(String customerFullName, String customerAddress, String customerNIC,
+                 int numberOfRentalDays, Costume rentedCostume) {
+        this.orderId = nextOrderId++;
         this.customerFullName = customerFullName;
         this.customerAddress = customerAddress;
         this.customerNIC = customerNIC;
         this.numberOfRentalDays = numberOfRentalDays;
         this.rentedCostume = rentedCostume;
-        this.rentalStartDate = rentalStartDate;
-        this.totalAmount = totalAmount;
+        this.rentalStartDate = new Date(); // Set the rental start date to the current date
+        this.totalAmount = calculateTotalAmount(new Date());
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getCustomerFullName() {
@@ -80,32 +89,41 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public double calculateTotalAmount(){
+    public double calculateTotalAmount(Date date) {
         double costumePrice = rentedCostume.getPrice();
         return costumePrice * numberOfRentalDays;
     }
 
+    // Add a method to display order details (similar to your existing displayOrderDetails)
     public void displayOrderDetails() {
+        System.out.println("----------------------------------------------------------------");
         System.out.println("Order Details:");
+        System.out.println("----------------------------------------------------------------");
         System.out.println("Customer Name: " + customerFullName);
         System.out.println("Customer Address: " + customerAddress);
         System.out.println("Customer NIC: " + customerNIC);
         System.out.println("Number of Rental Days: " + numberOfRentalDays);
         System.out.println("Rented Costume: " + rentedCostume.getName());
         System.out.println("Rental Start Date: " + rentalStartDate);
+        System.out.println("----------------------------------------------------------------");
         System.out.println("Total Amount: " + totalAmount);
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------");
     }
 
-    public String generateReceipt() {
-        StringBuilder receipt = new StringBuilder();
-        receipt.append("Receipt\n");
-        receipt.append("Customer Name: ").append(customerFullName).append("\n");
-        receipt.append("Customer Address: ").append(customerAddress).append("\n");
-        receipt.append("Customer NIC: ").append(customerNIC).append("\n");
-        receipt.append("Number of Rental Days: ").append(numberOfRentalDays).append("\n");
-        receipt.append("Rented Costume: ").append(rentedCostume.getName()).append("\n");
-        receipt.append("Rental Start Date: ").append(rentalStartDate).append("\n");
-        receipt.append("Total Amount: ").append(totalAmount).append("\n");
-        return receipt.toString();
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", customerFullName='" + customerFullName + '\'' +
+                ", customerAddress='" + customerAddress + '\'' +
+                ", customerNIC='" + customerNIC + '\'' +
+                ", numberOfRentalDays=" + numberOfRentalDays +
+                ", rentedCostume=" + rentedCostume +
+                ", rentalStartDate=" + rentalStartDate +
+                ", totalAmount=" + totalAmount +
+                '}';
     }
 }
