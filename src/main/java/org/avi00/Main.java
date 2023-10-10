@@ -18,10 +18,15 @@ public class Main {
         boolean isRunning = true;
         while (isRunning) {
             // Display the main menu
+            System.out.println("--------------------------------------------------------------------------------------------");
+            System.out.println("Notice !!");
+            System.out.println("If you want to quit the application in a main menu type -1");
+            System.out.println("or if you want to stop a process for example 'place order' type -1 to all fields");
+            System.out.println("--------------------------------------------------------------------------------------------");
+
             System.out.println("Main Menu:");
-            System.out.println("1. Costume Inventory");
-            System.out.println("2. Place Orders");
-            System.out.println("3. Return Orders");
+            System.out.println("1. Costume Inventory Management");
+            System.out.println("2. Orders Management");
             System.out.println("-1. Exit");
             System.out.print("Enter your choice: ");
 

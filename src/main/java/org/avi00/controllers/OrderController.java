@@ -12,7 +12,7 @@ public class OrderController {
         commands.add(new PlaceOrderCommand());
         commands.add(new FindOrderByNICCommand());
         commands.add(new SeeAllOrdersCommand());
-//        commands.add(new FinishOrderCommand());
+        commands.add(new FinishOrderCommand());
 
     }
 
